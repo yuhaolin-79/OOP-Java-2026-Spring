@@ -1,0 +1,557 @@
+<html>
+<head>
+<title>Take Assessment &copy; 2002-2005 iCarnegie, Inc. - UI Version 3.14.1</title>
+</head><body onload="">
+<span class=dialogueheader>Take Assessment Exercise 5</span><br><br>
+<hr>
+<a name="top_6765486"></a>
+<table><tr>
+<td width=5><br></td>  <td class=td0_highlight-label width=12 align=right valign=top nowrap >
+     <span class=highlight-label >1.</span></td>
+<td width=5><br></td>  <td valign=top class=td0_x align=left > <a href="#6765486">Go to bottom of question.</a> </td>
+</tr></table>
+<table><tr>
+<td width=5><br></td><td class=td0_x valign=top>
+</td></tr></table>
+<table><tr>
+<td width=5><br></td>  <td valign=top class=td0_x align=left > <!-- new pg 070103 ici --> 
+<h2 align="center">Using Design Patterns in the Gourmet Coffee System</h2> 
+<h3>Prerequisites, Goals, and Outcomes</h3>
+<blockquote> <b><i>Prerequisites:</i></b> Before you begin this exercise, you 
+  need mastery of the following: 
+  <ul>
+    <li> <em>Object-oriented Programming</em>
+<ul>
+        <li>How to define interfaces</li>
+        <li>How to implement interfaces</li>
+      </ul>
+  </ul>
+</blockquote>
+<blockquote> 
+  <ul>
+    <li><em>Design Patterns</em>: 
+      <ul>
+        <li>Knowledge of the singleton pattern</li>
+        <li>Knowledge of the strategy pattern</li>
+      </ul>
+    </li>
+  </ul>
+  <p> <b><i>Goals:</i></b> Reinforce your ability to use the singleton and strategy 
+    patterns
+<p> <b><i>Outcomes:</i></b> You 
+    will demonstrate mastery in the following: 
+  <ul>
+    <li>Producing applications that use the singleton pattern</li>
+    <li>Producing applications that use the strategy pattern</li>
+  </ul>
+</blockquote>
+<h3>Background </h3>
+
+<p>In this assignment, you will create another version of the <em>Gourmet Coffee System</em>. This version will  present the user with   four choices:</p>
+<blockquote>
+  <p>
+    <tt>[0] Quit<br>
+    [1] Display sales (Plain Text)<br>
+    [2] Display sales (HTML)<br>
+    [3] Display sales (XML)<br>
+    choice&gt;</tt></p>
+</blockquote>
+<p>The user will be able to display the sales information in three
+    formats:
+    plain
+    text, HTML, or XML. Part of the work has been done for you and is provided
+  in the student archive. You will implement the code that formats the
+  sales information. This code will use the singleton and strategy patterns. </p>
+<h3>Description</h3>
+<p>The following class diagram shows how the singleton and strategy pattern will 
+  be used in your implementation:</p>
+<blockquote> 
+  <table border="0" width="75%" cellpadding="2" cellspacing="2">
+    <tr> 
+      <td><img height="426" width="627" alt="Figure 1 Portion of Gourmet Coffee System class diagram" src="Exercise%205/formttr-cof-gou-sys.jpg"></td>
+    </tr>
+    <tr> 
+      <td><strong>Figure 1 </strong><em>Portion of Gourmet Coffee System class diagram</em></td>
+    </tr>
+  </table>
+</blockquote>
+<p>The elements of the pattern are:</p>
+<ul>
+  <li>Interface <code>SalesFormatter</code> declares a method called <code>formatSales</code> 
+    that produces a string representation of the sales information.</li>
+  <li>Class <code>PlainTextSalesFormatter</code> implements <code>formatSales</code>. 
+    Its version returns the sales information in a plain-text format. </li>
+  <li>Class <code>HTMLSalesFormatter</code> implements <code>formatSales</code>. 
+    Its version returns the sales information in an HTML format. </li>
+  <li>Class <code>XMLSalesFormatter</code> implements <code>formatSales</code>. 
+    Its version returns the sales information in an XML format. </li>
+  <li>Class <code>GourmetCoffee</code> is the context class. It also contains 
+    client code. The client code calls: 
+    <ul>
+      <li> Method <code>GourmetCoffee.setSalesFormatter</code> to change the 
+        current formatter</li>
+      <li>Method <code>GourmetCoffee.displaySales</code> to display the sales 
+        information using the current formatter</li>
+    </ul>
+  </li>
+</ul>
+<p>In this assignment, you should implement the following interface and classes:</p>
+<ul>
+  <li><code>SalesFormatter</code></li>
+  <li><code>PlainTextSalesFormatter</code></li>
+  <li><code>HTMLSalesFormatter</code></li>
+  <li><code>XMLSalesFormatter</code></li>
+  <li><code>GourmetCoffee</code> (a partial implementation is provided in the student archive)</li>
+</ul>
+<p>Complete implementations of the following classes are provided in the
+    student archive:</p>
+<ul>
+  <li><code>Coffee</code></li>
+  <li><code>CoffeeBrewer</code></li>
+  <li><code>Product</code></li>
+  <li><code>Catalog</code></li>
+  <li><code>OrderItem</code></li>
+  <li><code>Order</code></li>
+  <li><code>Sales</code></li>
+</ul>
+<h4>Interface <code>SalesFormatter</code></h4>
+<p>Interface <code>SalesFormatter</code> declares the method that every &quot;Formatter&quot; 
+  class will implement.</p>
+<p><em>Method:</em></p>
+<ul>
+  <li> <code><em>public String formatSales(Sales sales)</em></code>. Produces 
+    a string representation of the sales information.</li>
+</ul>
+<h4>Class <code>PlainTextSalesFormatter</code></h4>
+<p>Class <code>PlainTextSalesFormatter</code> implements the interface <code>SalesFormatter</code>. 
+  This class is implemented as a singleton so a new object will not be created 
+  every time the plain-text format is used.</p>
+<p><em>Static variable:</em></p>
+<ul>
+  <li><code><em>singletonInstance</em></code>. The single instance of class <code></code><code>PlainTextSalesFormatter</code>.</li>
+</ul>
+<p><em>Constructor and methods:</em></p>
+<ul>
+  <li> <code><em>static public PlainTextSalesFormatter getSingletonInstance()</em></code>. 
+    Static method that obtains the single instance of class <code>PlainTextsalesFormatter</code>. 
+  </li>
+</ul>
+<ul>
+  <li> <code><em>private PlainTextSalesFormatter()</em></code>. Constructor that 
+    is declared private so it is inaccessible to other classes. A private constructor 
+    makes it impossible for any other class to create an instance of class <code>PlainTextSalesFormatter</code>.</li>
+</ul>
+<ul>
+  <li> <code><em>public String formatSales(Sales sales)</em></code>. Produces     
+    a string that contains the specified sales information in a plain-text format.     
+    Each order in the sales information has the following format:     
+    <pre>------------------------
+Order <em>number</em>
+
+<em>quantity1</em> <em>code1</em> <em>price1</em>
+<em>quantity2</em> <em>code2</em> <em>price2</em>
+...
+<em>quantityN</em> <em>codeN</em> <em>priceN</em>
+
+Total = <em>totalCost</em></pre>
+    where 
+    <ul>
+      <li><em>number</em> is the order number.</li>
+      <li><em>quantityX</em> is the quantity of the product.</li>
+      <li><em>codeX</em> is the code of the product.</li>
+      <li><em>priceX</em> is the price of the product.</li>
+      <li><em>totalCost</em> is the total cost of the order.</li>
+    </ul>
+    <p>Each order should begin with a dashed line. The first order in the sales 
+      information should be given an order number of 1, the second should be given 
+      an order number of 2, and so on.</p>
+  </li>
+</ul>
+
+<h4>Class <code>HTMLSalesFormatter</code></h4>
+<p>Class <code>HTMLSalesFormatter</code> implements the interface <code>SalesFormatter</code>. 
+  This class is implemented as a singleton so a new object will not be created 
+  every time the HTML format is used.</p>
+<p><em>Static variable:</em></p>
+<ul>
+  <li><code><em>singletonInstance</em></code>. The single instance of class <code></code><code>HTMLSalesFormatter</code>.</li>
+</ul>
+<p><em>Constructor and methods:</em></p>
+<ul>
+  <li> <code><em>static public HTMLSalesFormatter getSingletonInstance()</em></code>. 
+    Static method that obtains the single instance of class <code>HTMLSalesFormatter</code>. 
+  </li>
+</ul>
+<ul>
+  <li> <code><em>private HTMLSalesFormatter()</em></code>. Constructor that is 
+    declared private so it is inaccessible to other classes. A private constructor 
+    makes it impossible for any other class to create an instance of class <code>HTMLSalesFormatter</code>.</li>
+</ul>
+<ul>
+  <li> <code><em>public String formatSales(Sales sales)</em></code>. Produces 
+    a string that contains the specified sales information in an HTML format. 
+  </li>
+</ul>
+<blockquote> 
+  <ul>
+    <li>The string should begin with the following  HTML:    </li>
+    <blockquote>
+      <pre>&lt;html&gt;
+  &lt;body&gt;
+    &lt;center&gt;&lt;h2&gt;Orders&lt;/h2&gt;&lt;/center&gt;</pre>
+    </blockquote>
+    <li>Each order in the sales information should begin with horizontal
+      line, that is, an <code>&lt;hr&gt;</code> 
+    tag. </li>
+    <li>Each order in the sales information should have the following
+      format:
+    </li>
+  </ul>
+  <blockquote>
+    <pre>    &lt;hr&gt;
+    &lt;h4&gt;Total = <em>totalCost</em>&lt;/h4&gt;
+      &lt;p&gt;
+        &lt;b&gt;code:&lt;/b&gt; <em>code</em>1&lt;br&gt;
+        &lt;b&gt;quantity:&lt;/b&gt; <em>quantity</em>1&lt;br&gt;
+        &lt;b&gt;price:&lt;/b&gt; <em>price</em>1
+     &lt;/p&gt;
+	  ...
+     &lt;p&gt;
+        &lt;b&gt;code:&lt;/b&gt; <em>codeN</em>&lt;br&gt;
+        &lt;b&gt;quantity:&lt;/b&gt; <em>quantityN</em>&lt;br&gt;
+        &lt;b&gt;price:&lt;/b&gt; <em>priceN</em>
+     &lt;/p&gt;</pre>
+    <p> where:</p>
+  </blockquote>
+  <ul>
+    <ul>
+      <li><em>quantityX</em> is the quantity of
+        the product.</li>
+      <li><em>codeX</em> is the code of the product.</li>
+      <li><em>priceX</em> is the  price of the product.</li>
+      <li><em>totalCost</em> is the total cost of the order.</li>
+    </ul>
+  </ul>
+  <ul>
+    <li>The string should end with the following HTML:     
+      <blockquote>
+        <pre>  &lt;/body&gt;
+&lt;/html&gt;</pre>
+      </blockquote>
+    </li>
+  </ul>
+</blockquote>
+
+<h4>Class <code>XMLSalesFormatter</code></h4>
+<p>Class <code>XMLSalesFormatter</code> implements the interface <code>SalesFormatter</code>. 
+  This class is implemented as a singleton so a new object will not be created 
+  every time the XML format is used.</p>
+<p><em>Static variable:</em></p>
+<ul>
+  <li><code><em>singletonInstance</em></code>. The single instance of class <code></code><code>XMLSalesFormatter</code>.</li>
+</ul>
+<p><em>Constructor and methods:</em></p>
+<ul>
+  <li> <code><em>static public XMLSalesFormatter getSingletonInstance()</em></code>. 
+    Static method that obtains the single instance of class <code>XMLSalesFormatter</code>. 
+  </li>
+</ul>
+<ul>
+  <li> <code><em>private XMLSalesFormatter()</em></code>. Constructor that is 
+    declared private so it is inaccessible to other classes. A private constructor 
+    makes it impossible for any other class to create an instance of class <code>XMLSalesFormatter</code>.</li>
+</ul>
+<ul>
+  <li> <code><em>public String formatSales(Sales sales)</em></code>. Produces 
+    a string that contains the specified sales information in an XML format.</li>
+</ul>
+<blockquote> 
+  <ul>
+    <li>The string should begin with the following XML: </li>
+    <blockquote> 
+      <pre>&lt;Sales&gt;</pre>
+    </blockquote>
+    <li>Each order in the sales information should have the following format:     
+      <pre>  &lt;Order total=&quot;<em>totalCost</em>&quot;&gt;
+    &lt;OrderItem quantity=&quot;<em>quantity1</em>&quot; price=&quot;<em>price1</em>&quot;&gt;<em>code1</em>&lt;/OrderItem&gt;
+    ...
+    &lt;OrderItem quantity=&quot;<em>quantityN</em>&quot; price=&quot;<em>priceN</em>&quot;&gt;<em>codeN</em>&lt;/OrderItem&gt;
+  &lt;/Order&gt;</pre>
+      <p> where:</p>
+    </li>
+  </ul>
+  <ul>
+    <ul>
+      <li><em>quantityX</em> is the quantity of the product.</li>
+      <li><em>codeX</em> is the code of the product.</li>
+      <li><em>priceX</em> is the price of the product.</li>
+      <li><em>totalCost</em> is the total cost of the order.</li>
+    </ul>
+  </ul>
+  <ul>
+    <li>The string should end with the following XML:     
+      <blockquote> 
+        <pre>&lt;/Sales&gt;</pre>
+      </blockquote>
+    </li>
+  </ul>
+</blockquote>
+<h4>Class <code>GourmetCoffee</code></h4>
+<p>Class <code>GourmetCoffee</code> lets the user display the sales information 
+  in one of three formats: plain text, HTML, or XML. A partial implementation 
+  of this class is provided in the student archive. </p>
+<p><em>Instance variables:</em></p>
+<ul>
+  <li><code><em>private Sales sales</em></code>. A list of the orders that have 
+    been paid for.</li>
+</ul>
+<ul>
+  <li><code><em>private SalesFormatter salesFormatter</em></code>. A reference 
+    variable that refers to the current formatter: a <code>PlainTextSalesFormatter</code>, 
+    <code>HTMLSalesFormatter</code>, or <code>XMLSalesFormatter</code> object.</li>
+</ul>
+<p><em>Constructor and methods:</em></p>
+<p>The following methods and constructor are complete and require no modification:</p>
+<ul>
+  <li> <code><em>public static void main(String[] args) throws IOException</em></code>. 
+    Starts the application.</li>
+</ul>
+<ul>
+  <li> <code><em>private GourmetCoffee()</em></code>. Initialize instance variables 
+    <code>sales</code> and <code>salesFormatter</code>.</li>
+</ul>
+<ul>
+  <li> <code><em>private Catalog loadCatalog()</em></code>.Populates the product 
+    catalog.</li>
+</ul>
+<ul>
+  <li> <code><em>private void loadSales(Catalog catalog)</em></code>. Populates 
+    the <code>sales</code> object.</li>
+</ul>
+<ul>
+  <li><code><em>private int getChoice() throws IOException</em></code>. Displays 
+    a menu of options and verifies the user's choice.</li>
+</ul>
+<p>The following methods should be completed:</p>
+<ul>
+  <li><code><em>private void setSalesFormatter(SalesFormatter newFormatter)</em></code>. 
+    Changes the current formatter by updating the instance variable <code>salesFormatter</code> 
+    with the object specified in the parameter <code>newFormatter</code>.</li>
+</ul>
+<ul>
+  <li><code><em>private void displaySales()</em></code>. Displays the sales information 
+    in the standard output using the method <code>salesFormatter.formatSales</code> 
+    to obtain the sales information in the current format.</li>
+</ul>
+<ul>
+  <li><code><em>private void run() throws IOException</em></code>. Presents the 
+    user with a menu of options and executes the selected task </li>
+</ul>
+<ul>
+  <ul>
+    <li>If the user chooses option 1, <code>run</code> calls method <code>setSalesFormatter</code> 
+      with the singleton instance of class <code>PlainTextSalesFormatter</code>, 
+      and calls method <code>displaySales</code> to display the sales information 
+      in the standard output.</li>
+  </ul>
+</ul>
+<ul>
+  <ul>
+    <li>If the user chooses option 2, <code>run</code> calls method <code>setSalesFormatter</code> 
+      with the singleton instance of class <code>HTMLSalesFormatter</code>, and 
+      calls method <code>displaySales</code> to display the sales information 
+      in the standard output.</li>
+  </ul>
+</ul>
+<ul>
+  <ul>
+    <li>If the user chooses option 3, <code>run</code> calls method <code>setSalesFormatter</code> 
+      with the singleton instance of class <code>XMLTextSalesFormatter</code>, 
+      and calls method <code>displaySales</code> to display the sales information 
+      in the standard output.</li>
+  </ul>
+</ul>
+<h3>Files</h3>
+The following files are needed to complete this assignment:     
+<ul>
+  <li><cite><a href="Exercise%205/student-files.zip"><code>student-files.zip</code></a></cite> 
+    &#151; Download this file. This archive contains the following: 
+    <ul>
+      <li>Class files 
+        <ul>
+          <li><cite><code>Coffee.class</code></cite></li>
+          <li><cite><code>CoffeeBrewer.class</code></cite></li>
+          <li><cite><code>Product.class</code></cite> </li>
+          <li><cite><code>Catalog.class</code></cite> </li>
+          <li><cite><code>OrderItem.class</code></cite> </li>
+          <li><cite><code>Order.class</code></cite> </li>
+          <li><cite><code>Sales.class</code></cite></li>
+        </ul>
+      </li>
+      <li>Documentation 
+        <ul>
+          <li><cite><code>Coffee.html</code></cite></li>
+          <li><cite><code>CoffeeBrewer.html</code></cite></li>
+          <li><cite><code>Product.html</code></cite><code><cite> </cite></code></li>
+          <li><cite><code>Catalog.html</code></cite><code><cite></cite></code> 
+          </li>
+          <li> <cite><code>OrderItem.html</code></cite> </li>
+          <li><cite><code>Order.html</code></cite> </li>
+          <li><cite><code>Sales.html</code></cite> </li>
+        </ul>
+      </li>
+      <li><cite><code>GourmetCoffee.java</code></cite>. A partial implementation 
+        of the class <code>GourmetCoffee</code>.</li>
+    </ul>
+  </li>
+</ul>
+<h3>Tasks </h3>
+<p>Implement the interface <code>SalesFormatter</code> and the classes <code>PlainTextSalesFormatter</code>, 
+  <code>HTMLSalesFormatter</code>, <code>XMLSalesFormatter</code>. Finish the 
+  implementation of class <code>GourmetCoffee</code>. Document using Javadoc and 
+  follow Sun's code conventions. The following steps will guide you through this 
+  assignment. Work incrementally and test each increment. Save often.</p>
+<ol start="1">
+  <li><strong>Extract </strong> the files by
+    issuing the following command at  the command prompt:
+    <p><tt>C:\&gt;</tt><kbd>unzip student-files.zip</kbd> </p>
+  </li>
+  <li><strong>Then</strong>, implement interface <code>SalesFormatter</code> from 
+    scratch.</li>
+</ol>
+<ol start="3">
+  <li><strong>Next</strong>, implement class <code>PlainTextSalesFormatter</code> 
+    from scratch.</li>
+</ol>
+<ol start="4">
+  <li><strong>Then</strong>, implement class <code>HTMLSalesFormatter</code> from 
+    scratch.</li>
+</ol>
+<ol start="5">
+  <li><strong>Next</strong>, implement class <code>XMLSalesFormatter</code> from 
+    scratch.</li>
+</ol>
+<ol start="6">
+  <li><strong>Then</strong>, complete the method <code>GourmetCoffee.setSalesFormatter</code>.</li>
+</ol>
+<ol start="7">
+  <li><strong>Next</strong>, complete the method <code>GourmetCoffee.</code><code>displaySales</code>.</li>
+</ol>
+<ol start="8">
+  <li><strong>Then</strong>, complete the method <code>GourmetCoffee.run</code>.</li>
+</ol>
+<ol start="9">
+  <li><strong>Finally</strong>, compile and execute the class <code>GourmetCoffee</code>.     
+    Sales information has been hard-coded in the <code>GourmetCoffee</code> template     
+    provided by iCarnegie.     
+    <p></p>
+    <ul>
+      <li>If the user chooses to display the sales information in plain text,     
+        the output should be:     
+        <blockquote> 
+          <pre>------------------------
+Order 1
+
+5 C001 17.99
+
+Total = 89.94999999999999
+------------------------
+Order 2
+
+2 C002 18.75
+2 A001 9.0
+
+Total = 55.5
+------------------------
+Order 3
+
+1 B002 200.0
+
+Total = 200.0</pre>
+        </blockquote>
+      </li>
+      <li>If the user chooses to display the sales information in HTML, the output     
+        should be:     
+        <blockquote> 
+          <pre>&lt;html&gt;
+  &lt;body&gt;
+    &lt;center&gt;&lt;h2&gt;Orders&lt;/h2&gt;&lt;/center&gt;
+    &lt;hr&gt;
+    &lt;h4&gt;Total = 89.94999999999999&lt;/h4&gt;
+      &lt;p&gt;
+        &lt;b&gt;code:&lt;/b&gt; C001&lt;br&gt;
+        &lt;b&gt;quantity:&lt;/b&gt; 5&lt;br&gt;
+        &lt;b&gt;price:&lt;/b&gt; 17.99
+      &lt;/p&gt;
+    &lt;hr&gt;
+    &lt;h4&gt;Total = 55.5&lt;/h4&gt;
+      &lt;p&gt;
+        &lt;b&gt;code:&lt;/b&gt; C002&lt;br&gt;
+        &lt;b&gt;quantity:&lt;/b&gt; 2&lt;br&gt;
+        &lt;b&gt;price:&lt;/b&gt; 18.75
+      &lt;/p&gt;
+      &lt;p&gt;
+        &lt;b&gt;code:&lt;/b&gt; A001&lt;br&gt;
+        &lt;b&gt;quantity:&lt;/b&gt; 2&lt;br&gt;
+        &lt;b&gt;price:&lt;/b&gt; 9.0
+      &lt;/p&gt;
+    &lt;hr&gt;
+    &lt;h4&gt;Total = 200.0&lt;/h4&gt;
+      &lt;p&gt;
+        &lt;b&gt;code:&lt;/b&gt; B002&lt;br&gt;
+        &lt;b&gt;quantity:&lt;/b&gt; 1&lt;br&gt;
+        &lt;b&gt;price:&lt;/b&gt; 200.0
+      &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+        </pre>
+        </blockquote>
+      </li>
+      <li>If the user chooses to display the sales information in XML, the output     
+        should be:     
+        <blockquote> 
+          <pre>&lt;Sales&gt;
+  &lt;Order total=&quot;89.94999999999999&quot;&gt;
+    &lt;OrderItem quantity=&quot;5&quot; price=&quot;17.99&quot;&gt;C001&lt;/OrderItem&gt;
+  &lt;/Order&gt;
+  &lt;Order total=&quot;55.5&quot;&gt;
+    &lt;OrderItem quantity=&quot;2&quot; price=&quot;18.75&quot;&gt;C002&lt;/OrderItem&gt;
+    &lt;OrderItem quantity=&quot;2&quot; price=&quot;9.0&quot;&gt;A001&lt;/OrderItem&gt;
+  &lt;/Order&gt;
+  &lt;Order total=&quot;200.0&quot;&gt;
+    &lt;OrderItem quantity=&quot;1&quot; price=&quot;200.0&quot;&gt;B002&lt;/OrderItem&gt;
+  &lt;/Order&gt;
+&lt;/Sales&gt;
+        </pre>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h3>Submission</h3>
+<p>Upon completion, submit <strong>only</strong> the following:</p>
+<ol>
+  <li><code>SalesFormatter.java</code></li>
+  <li><code>PlainTextSalesFormatter.java</code></li>
+  <li><code>HTMLSalesFormatter.java</code></li>
+  <li><code>XMLSalesFormatter.java</code></li>
+  <li><code>GourmetCoffee.java</code></li>
+</ol>
+ </td>
+<td width=5><br></td></tr></table>
+<a name="6765486"></a><table><tr>
+<td width=5><br></td>  <td valign=top class=td0_x align=left > <a href="#top_6765486">Go to top of question.</a> </td>
+</tr></table>
+<table width="737"><tr>
+<td width=4><br></td><td class=td0_x width="5" ><td width=2><br></td>
+<td width="700"><table></table>
+  </tr></table>
+<hr>
+<table><tr>
+<td width=5><br></td>  <td class=td0_copyright  align=left valign=top >
+     <span class=copyright ><br>&#169; Copyright 2004 iCarnegie, Inc.  All rights reserved.</span></td> 
+</tr></table>
+
+
+</body>

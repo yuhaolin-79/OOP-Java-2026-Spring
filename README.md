@@ -8,13 +8,18 @@ This is a **bilingual** course (Chinese & English). All lecture slides, exams, a
 
 ```
 ├── README.md
-└── lecture1/
-    ├── lecture1note.md      # Unit 1.1 — Java Applications (notes)
-    ├── image.png             # Java platform architecture diagram
-    ├── image-1.png           # Java platform version evolution
-    └── src/
-        ├── HelloWorld.java   # First Java program
-        └── HelloWorld.class  # Compiled bytecode
+├── lecture1/
+│   ├── lecture1note.md      # Unit 1.1 — Java Applications (notes)
+│   ├── image.png             # Java platform architecture diagram
+│   ├── image-1.png           # Java platform version evolution
+│   └── src/
+│       ├── HelloWorld.java   # First Java program
+│       └── HelloWorld.class  # Compiled bytecode
+└── lab10/
+    ├── README.md             # Design Patterns: Singleton & Strategy
+    ├── SampleCode/           # In-class Borrower examples
+    ├── student-files/        # Gourmet Coffee System (main project)
+    └── docs/                 # Original assignment materials + screenshots
 ```
 
 ## Contents
@@ -25,6 +30,15 @@ This is a **bilingual** course (Chinese & English). All lecture slides, exams, a
 - Java platform editions: Java SE, Jakarta EE, legacy platform overview
 - Key differences between Java and C (OOP paradigm, type system, memory management)
 - Writing and running a HelloWorld application
+
+### Lab 10 — Design Patterns: Singleton & Strategy
+
+- **Gourmet Coffee System** — a Java console application for formatting sales data
+- **Strategy Pattern** — interchangeable output formats (Plain Text, HTML, XML) via a common `SalesFormatter` interface
+- **Singleton Pattern** — each formatter uses a private constructor with a static `getSingletonInstance()` factory method
+- **Modern Java features** — Generics, StringBuilder, switch expressions, `@FunctionalInterface`, `System.lineSeparator()`
+
+See `lab10/README.md` for full documentation.
 
 ## Requirements
 
