@@ -4,9 +4,12 @@ Object-Oriented Programming (Java) course notes and code.
 
 This is a **bilingual** course (Chinese & English). All lecture slides, exams, and code are in English.
 
+This is the textbook for the course:
+![alt text](image.png)
+
 ## Structure
 
-```
+```plaintext
 ├── README.md
 ├── lecture1/
 │   ├── README.md             # Lecture 1 documentation
