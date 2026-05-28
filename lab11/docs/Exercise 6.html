@@ -1,0 +1,386 @@
+<html>
+<head>
+<link rel=stylesheet href="/css/cteform.css" type="text/css">
+<title>View Assessment Result &copy; 2002-2005 iCarnegie, Inc. - UI Version 3.14.1</title>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache"><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+</head><body onload="">
+Exercise 6
+<br>
+<br>
+
+<hr><td width=5><br></td>
+<a name="top_of_page"></a>
+<table><tr>
+</tr></table>
+<a name="top_6765776"></a>
+<table><tr>
+<td width=5><br></td>  <td class=td0_highlight-label width=12 align=right valign=top nowrap >
+     <span class=highlight-label >1.</span></td>
+<td width=5><br></td>  <td valign=top class=td0_x align=left > <a href="#6765776">Go to bottom of question.</a> </td>
+</tr></table>
+<table><tr>
+<td width=5><br></td>  <td valign=top class=td0_x align=left > <!-- new pg 070103 ici --> 
+<h2 align="center">Using File I/O in the Gourmet Coffee System</h2> 
+<h3>Prerequisites, Goals, and Outcomes</h3>
+<blockquote> <b><i>Prerequisites:</i></b> Before you begin this exercise, you 
+  need mastery of the following: 
+  <ul>
+    <li> <em>Java API</em>
+<ul>
+        <li>Knowledge of the class <code>StringTokenizer</code></li>
+      </ul>
+    <li><em>File I/O</em>
+<ul>
+        <li>Knowledge of file I/O
+<ul>
+            <li>How to read data from a file</li>
+            <li>How to write data to a file</li>
+          </ul>
+        </li>
+      </ul>
+  </ul>
+  <p> <b><i>Goals:</i></b> Reinforce your ability to use file I/O 
+  <p> <b><i>Outcomes:</i></b> You will master the following skills: 
+  <ul>
+    <li> Produce applications that read data from a file and parse it</li>
+    <li> Produce applications that write data to a file</li>
+  </ul>
+</blockquote>
+<h3>Background </h3>
+
+<p>In this assignment, you will create another version of the <em>Gourmet Coffee 
+  System</em>. In previous versions, the data for the product catalog was hard-coded 
+  in the application. In this version, the data will be loaded from a file. Also, 
+  the user will be able to write the sales information to a file in one of three 
+  formats: plain text, HTML, or XML. Part of the work has been done for you and 
+  is provided in the student archive. You will implement the code that loads the 
+  product catalog and persists the sales information. </p>
+<h3>Description</h3>
+<p>The <em>Gourmet Coffee System</em> sells three types of products: coffee, coffee 
+  brewers, and accessories for coffee consumption. A file called catalog.dat stores 
+  the product data:</p>
+<ul>
+        <li><code><cite><a href="Exercise%206/catalog.dat" target="internalWindow"><em>catalog.dat</em></a></cite></code>. 
+          File with product data</li>
+</ul>
+<p>Every line in catalog.dat contains exactly one product. </p>
+<p>A line for a coffee product has the following format:</p>
+<blockquote> 
+  <pre>Coffee_<em>code</em>_<em>description</em>_<em>price</em>_<em>origin</em>_<em>roast</em>_<em>flavor</em>_<em>aroma</em>_<em>acidity</em>_<em>body</em></pre>
+</blockquote>
+<p>where:</p>
+<ul>
+  <li>&quot;Coffee&quot; is a prefix that indicates the line type.</li>
+  <li><em>code</em> is a string that represents the code of the coffee.</li>
+  <li><em>description</em> is a string that represents the description of the 
+    coffee.</li>
+  <li><em>price</em> is a double that represents the price of the coffee.</li>
+  <li><em>origin</em> is a string that represents the origin of the coffee.</li>
+  <li><em>roast</em> is a string that represents the roast of the coffee.</li>
+  <li><em>flavor</em> is a string that represents the flavor of the coffee.</li>
+  <li><em>aroma</em> is a string that represents the aroma of the coffee.</li>
+  <li><em>acidity</em> is a string that represents the acidity of the coffee.</li>
+  <li><em>body</em> is a string that represents the body of the coffee.</li>
+</ul>
+<p>The fields are delimited by an underscore ( _ ). You can assume that the fields 
+  themselves do not contain any underscores.</p>
+<p>A line for a coffee brewer has the following format:</p>
+<blockquote> 
+  <pre>Brewer_<em>code</em>_<em>description</em>_<em>price</em>_<em>model</em>_<em>waterSupply</em>_<em>numberOfCups</em></pre>
+</blockquote>
+<p>where:</p>
+<ul>
+  <li>&quot;Brewer&quot; is a prefix that indicates the line type.</li>
+  <li><em>code</em> is a string that represents the code of the brewer.</li>
+  <li><em>description</em> is a string that represents the description of the 
+    brewer.</li>
+  <li><em>price</em> is a double that represents the price of the brewer.</li>
+  <li><em>model</em> is a string that represents the model of the coffee brewer.</li>
+  <li><em>waterSupply</em> is a string that represents the water supply of the 
+    coffee brewer.</li>
+  <li><em>numberOfCups</em> is an integer that represents the capacity of the 
+    coffee brewer in number of cups.</li>
+</ul>
+<p>The fields are delimited by an underscore ( <code>_</code> ). You can assume 
+  that the fields themselves do not contain any underscores.</p>
+<p>A line for a coffee accessory has the following format:</p>
+<blockquote> 
+  <pre>Product_<em>code</em>_<em>description</em>_<em>price</em></pre>
+</blockquote>
+<p>where:</p>
+<ul>
+  <li>&quot;Product&quot; is a prefix that indicates the line type.</li>
+  <li><em>code</em> is a string that represents the code of the product.</li>
+  <li><em>description</em> is a string that represents the description of the 
+    product.</li>
+  <li><em>price</em> is a double that represents the price of the product.</li>
+</ul>
+<p>The fields are delimited by an underscore ( <code>_</code> ). You can assume 
+  that the fields themselves do not contain any underscores.</p>
+<p>The following class diagram highlights the elements you will use to load the 
+  product catalog and persist the sales information:</p>
+<blockquote> 
+  <table border="0" width="75%" cellpadding="2" cellspacing="2">
+    <tr> 
+            <td><img height="368" width="541" alt="Figure 1 Portion of Gourmet Coffee System class diagram" src="Exercise%206/io-gou-cof.jpg"></td>
+    </tr>
+    <tr> 
+      <td><strong>Figure 1 </strong><em>Portion of Gourmet Coffee System class diagram</em></td>
+    </tr>
+  </table>
+</blockquote>
+<p>In this assignment, you will implement <code>FileCatalogloader</code> and complete 
+  the implementation of <code>GourmetCoffee.</code></p>
+<h4>Interface <code>CatalogLoader</code></h4>
+<p>The interface <code>CatalogLoader</code> declares a method for producing a 
+  product catalog. A complete implementation of this interface is provided in 
+  the student archive.</p>
+<p><em>Method:</em></p>
+<ul>
+  <li> <pre><em>Catalog loadCatalog(String fileName)
+    throws FileNotFoundException,
+           IOException,
+           DataFormatException</em></pre>
+    Loads the information in the specified file into a product catalog and returns 
+    the catalog.</li>
+</ul>
+
+<h4>Class <code>DataFormatException</code></h4>
+<p>This exception<code></code> is thrown when a line in the file being parsed 
+  has errors:</p>
+<ul>
+  <li>The line does not have the expected number of tokens.</li>
+  <li>The tokens that should contain numbers do not.</li>
+</ul>
+<p>A complete implementation of this class is provided in the student archive.</p>
+<h4>Class <code>FileCatalogLoader</code></h4>
+<p>The class <code>FileCatalogLoader</code> implements interface <code>CatalogLoader</code>. 
+  It is used to obtain a product catalog from a file. You should implement this 
+  class from scratch:</p>
+<p><em>Methods:</em></p>
+<ul>
+  <li><pre><em>private Product readProduct(String line)
+    throws DataFormatException</em></pre>
+    This method reads a line of coffee-accessory data. It uses the class <code>StringTokenizer</code> 
+    to extract the accessory data in the specified line. If the line is error 
+    free, this method returns a <code>Product</code> object that encapsulates 
+    the accessory data. If the line has errors, that is, if it does not have the 
+    expected number of tokens or the token that should contain a double does not; 
+    this method throws a <code></code><code>DataFormatException</code> that contains 
+    the line of malformed data.</li>
+</ul>
+<ul>
+  <li><pre><em>private Coffee readCoffee(String line))
+    throws DataFormatException</em></pre>
+    This method reads a line of coffee data. It uses the class <code>StringTokenizer</code> 
+    to extract the coffee data in the specified line. If the line is error free, 
+    this method returns a <code>Coffee</code> object that encapsulates the coffee 
+    data. If the line has errors, that is, if it does not have the expected number 
+    of tokens or the token that should contain a double does not; this method 
+    throws a <code></code><code>DataFormatException</code> that contains the line 
+    of malformed data. </li>
+</ul>
+<ul>
+  <li><pre><em>private CoffeeBrewer readCoffeeBrewer(String line) 
+    throws DataFormatException</em></pre>
+    This method reads a line of coffee-brewer data. It uses the class <code>StringTokenizer</code> 
+    to extract the brewer data in the specified line. If the line is error free, 
+    this method returns a <code>CoffeeBrewer</code> object that encapsulates the 
+    brewer data. If the line has errors, that is, if it does not have the expected 
+    number of tokens or the tokens that should contain a number do not; this method 
+    throws a <code></code><code>DataFormatException</code> that contains the line 
+    of malformed data. </li>
+</ul>
+<ul>
+  <li>
+    <pre><em>public Catalog loadCatalog(String filename)
+    throws FileNotFoundException, 
+           IOException,
+           DataFormatException</em></pre>
+	<p>This method loads the information 
+    in the specified file into a product catalog and returns the catalog. It begins 
+    by opening the file for reading. It then proceeds to read and process each 
+    line in the file. The method <a href="http://java.sun.com/j2se/1.4/docs/api/java/lang/String.html#startsWith(java.lang.String)" target="externalWindow"><code>String.startsWith</code></a> 
+    is used to determine the line type:</li>
+</ul>
+<ul>
+  <ul>
+    <li>If the line type is &quot;Product&quot;, the method <code>readProduct</code> 
+      is invoked.</li>
+    <li>If the line type is &quot;Coffee&quot;, the method <code>readCoffee</code> 
+      is invoked.</li>
+    <li>If the line type is &quot;Brewer&quot;, the method <code>readCoffeeBrewer</code> 
+      is invoked.</li>
+  </ul>
+</ul>
+<blockquote> 
+  <p>After the line is processed, <code>loadCatalog</code> adds the product (accessory, 
+    coffee, or brewer) to the product catalog. When all the lines in the file 
+    have been processed, <code>load</code> returns the product catalog to the 
+    calling method. </p>
+  <p>This method can throw the following exceptions: </p>
+  <blockquote>
+    <ul>
+      <li><code>FileNotFoundException</code> &#151; if the specified file does 
+        not exist.</li>
+      <li><code>IOException</code> &#151; if there is an error reading the information 
+        in the specified file.</li>
+      <li><code>DataFormatException</code> &#151; if a line in the file has errors 
+        (the exception should contain the line of malformed data).</li>
+    </ul>
+  </blockquote>
+</blockquote>
+<h4>Class <code>GourmetCoffee</code></h4>
+<p>A partial implementation of class <code>GourmetCoffee</code> is provided in 
+  the student archive. You should implement <code>writeFile</code>, a method that 
+  writes sales information to a file:</p>
+<ul>
+  <li>
+    <pre><em>private void writeFile(String fileName, String content)
+    throws IOException</em> </pre>
+	<p>This method creates a new file with the specified 
+    name, writes the specified string to the file, and then closes the file.</p></li>
+</ul>
+<h4>Class <code>TestFileCatalogLoader</code></h4>
+      <p>This class is a test driver for <code>FileCatalogLoader</code>. A complete 
+        implementation is included in the student archive <cite><a href="Exercise%206/student-files.zip"><code>student-files.zip</code></a></cite>. 
+        You should use this class to test your implementation of <code>FileCatalogLoader</code>. 
+      </p>
+<h3>Files</h3>
+The following files are needed to complete this assignment: 
+<ul>
+        <li><cite><a href="Exercise%206/student-files.zip"><code>student-files.zip</code></a></cite> 
+          &#151; Download this file. This archive contains the following: 
+          <ul>
+      <li>Class files 
+        <ul>
+          <li><cite><code>Coffee.class</code></cite></li>
+          <li><cite><code>CoffeeBrewer.class</code></cite></li>
+          <li><cite><code>Product.class</code></cite> </li>
+          <li><cite><code>Catalog.class</code></cite></li>
+          <li><cite><code>OrderItem.class</code></cite></li>
+          <li><cite><code>Order.class</code></cite> </li>
+          <li><cite><code>Sales.class</code></cite></li>
+          <li><cite><code>SalesFormatter.class</code></cite></li>
+          <li><cite><code>PlainTextSalesFormatter.class</code></cite></li>
+          <li><cite><code>HTMLSalesFormatter.class</code></cite></li>
+          <li><cite><code>XMLSalesFormatter.class</code></cite></li>
+        </ul>
+      </li>
+      <li>Documentation 
+        <ul>
+          <li><cite><code>Coffee.html</code></cite></li>
+          <li><cite><code>CoffeeBrewer.html</code></cite></li>
+          <li><cite><code>Product.html</code></cite> </li>
+          <li><cite><code>Catalog.html</code></cite> </li>
+          <li><cite><code>OrderItem.html</code></cite></li>
+          <li><cite><code>Order.html</code></cite> </li>
+          <li><cite><code>Sales.html</code></cite> </li>
+          <li><cite><code>SalesFormatter.html</code></cite></li>
+          <li><cite><code>PlainTextSalesFormatter.html</code></cite></li>
+          <li><cite><code>HTMLSalesFormatter.html</code></cite></li>
+          <li><cite><code>XMLSalesFormatter.html</code></cite></li>
+        </ul>
+      </li>
+      <li>Java files 
+        <ul>
+          <li><cite><code>CatalogLoader.java</code></cite>. A complete implementation</li>
+          <li><cite><code>DataFormatException.java</code></cite>. A complete implementation</li>
+          <li><code><cite>TestFileCatalogLoader.java</cite></code>. A complete 
+            implementation</li>
+          <li><cite><code>GourmetCoffee.java</code></cite>. Use this template 
+            to complete your implementation.</li>
+        </ul>
+      </li>
+      <li>Data files for the test driver
+        <ul>
+          <li><cite><code>catalog.dat</code></cite>. A file with product information</li>
+          <li><cite><code>empty.dat</code></cite>. An empty file</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<h3>Tasks </h3>
+<p>Implement the class <code>FileCatalogLoader</code> and the method <code>GourmetCoffee.writeFile</code><code></code>. 
+  Document using Javadoc and follow Sun's code conventions. The following steps 
+  will guide you through this assignment. Work incrementally and test each increment. 
+  Save often.</p>
+<ol start="1">
+  <li><strong>Extract </strong> the files by issuing the following command at 
+    the command prompt: 
+    <p><tt>C:\&gt;</tt><kbd>unzip student-files.zip</kbd> </p>
+  </li>
+  <li><strong>Then</strong>, implement class <code>FileCatalogLoader</code> from 
+    scratch. Use the <code>TestFileCatalogLoader</code> driver to test your implementation. 
+  </li>
+</ol>
+<ol start="3">
+  <li><strong>Next</strong>, implement the method <code>GourmetCoffee.writeFile</code>.</li>
+</ol>
+<ol start="4">
+  <li><strong>Finally</strong>, compile the class <code>GourmetCoffee</code>, 
+    and execute the class <code>GourmetCoffee</code> by issuing the following 
+    command at the command prompt: 
+    <p><tt>C:\&gt;</tt><kbd>java GourmetCoffee catalog.dat</kbd> </p>
+    <p>Sales information has been hard-coded in the <code>GourmetCoffee</code> 
+      template provided by iCarnegie.</p>
+  </li>
+  <ul>
+    <li>If the user displays the catalog, the output should be: </li>
+    <blockquote> 
+      <pre>C001 Colombia, Whole, 1 lb<br>C002 Colombia, Ground, 1 lb<br>C003 Italian Roast, Whole, 1 lb<br>C004 Italian Roast, Ground, 1 lb<br>C005 French Roast, Whole, 1 lb<br>C006 French Roast, Ground, 1 lb<br>C007 Guatemala, Whole, 1 lb<br>C008 Guatemala, Ground, 1 lb<br>C009 Sumatra, Whole, 1 lb<br>C010 Sumatra, Ground, 1 lb<br>C011 Decaf Blend, Whole, 1 lb<br>C012 Decaf Blend, Ground, 1 lb<br>B001 Home Coffee Brewer<br>B002 Coffee Brewer, 2 Warmers<br>B003 Coffee Brewer, 3 Warmers<br>B004 Commercial Coffee, 20 Cups<br>B005 Commercial Coffee, 40 Cups<br>A001 Almond Flavored Syrup<br>A002 Irish Creme Flavored Syrup<br>A003 Mint Flavored syrup<br>A004 Caramel Flavored Syrup<br>A005 Gourmet Coffee Cookies<br>A006 Gourmet Coffee Travel Thermo<br>A007 Gourmet Coffee Ceramic Mug<br>A008 Gourmet Coffee 12 Cup Filters<br>A009 Gourmet Coffee 36 Cup Filters</pre>
+    </blockquote>
+    <li>If the user saves the sales information in plain text, a file with the 
+      following content should be created: </li>
+    <blockquote> 
+      <pre>------------------------
+Order 1
+
+5 C001 17.99
+
+Total = 89.94999999999999
+------------------------
+Order 2
+
+2 C002 18.75
+2 A001 9.0
+
+Total = 55.5
+------------------------
+Order 3
+
+1 B002 200.0
+
+Total = 200.0</pre>
+    </blockquote>
+    <li>If the user saves the sales information in HTML, a file with the following 
+      content should be created: 
+      <blockquote> 
+        <pre>&lt;html&gt;<br>  &lt;body&gt;<br>    &lt;center&gt;&lt;h2&gt;Orders&lt;/h2&gt;&lt;/center&gt;<br>    &lt;hr&gt;<br>    &lt;h4&gt;Total = 89.94999999999999&lt;/h4&gt;<br>      &lt;p&gt;<br>        &lt;b&gt;code:&lt;/b&gt; C001&lt;br&gt;<br>        &lt;b&gt;quantity:&lt;/b&gt; 5&lt;br&gt;<br>        &lt;b&gt;price:&lt;/b&gt; 17.99<br>      &lt;/p&gt;<br>    &lt;hr&gt;<br>    &lt;h4&gt;Total = 55.5&lt;/h4&gt;<br>      &lt;p&gt;<br>        &lt;b&gt;code:&lt;/b&gt; C002&lt;br&gt;<br>        &lt;b&gt;quantity:&lt;/b&gt; 2&lt;br&gt;<br>        &lt;b&gt;price:&lt;/b&gt; 18.75<br>      &lt;/p&gt;<br>      &lt;p&gt;<br>        &lt;b&gt;code:&lt;/b&gt; A001&lt;br&gt;<br>        &lt;b&gt;quantity:&lt;/b&gt; 2&lt;br&gt;<br>        &lt;b&gt;price:&lt;/b&gt; 9.0<br>      &lt;/p&gt;<br>    &lt;hr&gt;<br>    &lt;h4&gt;Total = 200.0&lt;/h4&gt;<br>      &lt;p&gt;<br>        &lt;b&gt;code:&lt;/b&gt; B002&lt;br&gt;<br>        &lt;b&gt;quantity:&lt;/b&gt; 1&lt;br&gt;<br>        &lt;b&gt;price:&lt;/b&gt; 200.0<br>      &lt;/p&gt;<br>  &lt;/body&gt;<br>&lt;/html&gt;</pre>
+      </blockquote>
+    </li>
+    <li>If the user saves the sales information in XML, a file with the following 
+      content should be created: 
+      <blockquote> 
+        <pre>&lt;Sales&gt;<br>  &lt;Order total=&quot;89.94999999999999&quot;&gt;<br>    &lt;OrderItem quantity=&quot;5&quot; price=&quot;17.99&quot;&gt;C001&lt;/OrderItem&gt;<br>  &lt;/Order&gt;<br>  &lt;Order total=&quot;55.5&quot;&gt;<br>    &lt;OrderItem quantity=&quot;2&quot; price=&quot;18.75&quot;&gt;C002&lt;/OrderItem&gt;<br>    &lt;OrderItem quantity=&quot;2&quot; price=&quot;9.0&quot;&gt;A001&lt;/OrderItem&gt;<br>  &lt;/Order&gt;<br>  &lt;Order total=&quot;200.0&quot;&gt;<br>    &lt;OrderItem quantity=&quot;1&quot; price=&quot;200.0&quot;&gt;B002&lt;/OrderItem&gt;<br>  &lt;/Order&gt;<br>&lt;/Sales&gt;</pre>
+      </blockquote>
+    </li>
+  </ul>
+</ol>
+<h3>Submission</h3>
+<p>Upon completion, submit <strong>only</strong> the following:</p>
+<ol>
+  <li><code>FileCatalogLoader.java</code></li>
+  <li><code>GourmetCoffee.java</code></li>
+</ol>
+ </td>
+<td width=5><br></td></tr></table>
+<a name="6765776"></a><table><tr>
+<td width=5><br></td>  <td valign=top class=td0_x align=left > <a href="#top_6765776">Go to top of question.</a> </td>
+</tr></table>
+<table><tr>
+<td width=5><br></td>  <td class=td0_copyright  align=left valign=top >
+     <span class=copyright ><br>&#169; Copyright 2004 iCarnegie, Inc.  All rights reserved.</span></td>
+</tr></table>
+</body></html>

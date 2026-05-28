@@ -30,11 +30,15 @@ This is the textbook for the course:
 │   ├── ConsoleIOExample.java # BufferedReader + PrintWriter demo
 │   ├── PrintTester.java      # printf() file reader demo
 │   └── examples/             # Scanner/BufferedReader comparison + Regex split
-└── lab10/
-    ├── README.md             # Design Patterns: Singleton & Strategy
-    ├── SampleCode/           # In-class Borrower examples
-    ├── student-files/        # Gourmet Coffee System (main project)
-    └── docs/                 # Original assignment materials + screenshots
+├── lab10/
+│   ├── README.md             # Design Patterns: Singleton & Strategy
+│   ├── SampleCode/           # In-class Borrower examples
+│   ├── student-files/        # Gourmet Coffee System (main project)
+│   └── docs/                 # Original assignment materials + screenshots
+└── lab11/
+    ├── README.md             # File I/O in the Gourmet Coffee System
+    ├── docs/                 # Assignment materials + screenshots
+    └── student-files/        # File I/O version (main project)
 ```
 
 ## Contents
@@ -65,6 +69,17 @@ See `lecture2/README.md` for full documentation and run instructions.
 - **Modern Java features** — Generics, StringBuilder, switch expressions, `@FunctionalInterface`, `System.lineSeparator()`
 
 See `lab10/README.md` for full documentation.
+
+### Lab 11 — File I/O in the Gourmet Coffee System
+
+- **Gourmet Coffee System with File I/O** — extends Lab 10 by loading product data from `catalog.dat` instead of hard-coding it
+- **File input** — `FileCatalogLoader` parses underscore-delimited product/coffee/brewer records using `BufferedReader` + `StringTokenizer`
+- **File output** — sales reports can be saved to files in Plain Text, HTML, or XML format via `GourmetCoffee.writeFile()`
+- **Error handling** — custom `DataFormatException` for malformed data; `FileNotFoundException` and `IOException` at the I/O layer
+- **Design patterns** — Strategy and Singleton patterns from Lab 10 are reused for output formatting
+- **Testing** — `TestFileCatalogLoader` provides automated verification of file parsing
+
+See `lab11/README.md` for full documentation.
 
 ## Requirements
 
