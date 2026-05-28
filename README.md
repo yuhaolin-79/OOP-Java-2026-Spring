@@ -35,10 +35,14 @@ This is the textbook for the course:
 │   ├── SampleCode/           # In-class Borrower examples
 │   ├── student-files/        # Gourmet Coffee System (main project)
 │   └── docs/                 # Original assignment materials + screenshots
-└── lab11/
-    ├── README.md             # File I/O in the Gourmet Coffee System
+├── lab11/
+│   ├── README.md             # File I/O in the Gourmet Coffee System
+│   ├── docs/                 # Assignment materials + screenshots
+│   └── student-files/        # File I/O version (main project)
+└── lab12/
+    ├── README.md             # GUI for the Gourmet Coffee System
     ├── docs/                 # Assignment materials + screenshots
-    └── student-files/        # File I/O version (main project)
+    └── GourmetCoffee/        # GUI version (complete project)
 ```
 
 ## Contents
@@ -80,6 +84,18 @@ See `lab10/README.md` for full documentation.
 - **Testing** — `TestFileCatalogLoader` provides automated verification of file parsing
 
 See `lab11/README.md` for full documentation.
+
+### Lab 12 — GUI for the Gourmet Coffee System
+
+- **Swing GUI** — replaces the console interface with a full graphical application
+- **Product detail panels** — `getPanel()` methods in `Product`, `Coffee`, `CoffeeBrewer` display attributes in `JPanel` using `GridBagLayout`
+- **Order management** — interactive add/modify/remove items, real-time total update
+- **Sales tracking** — register sales, display history, save to file via `JFileChooser`
+- **Event-driven programming** — `ActionListener` and `ListSelectionListener` inner classes
+- **Output formats** — Plain Text, HTML, XML via radio button selection (reuses Strategy Pattern)
+- **Modern Java** — generics (`JList<String>`, `List<Product>`), `try-with-resources`, `StringBuilder`
+
+See `lab12/README.md` for full documentation.
 
 ## Requirements
 

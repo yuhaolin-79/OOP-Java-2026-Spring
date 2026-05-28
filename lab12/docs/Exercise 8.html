@@ -1,0 +1,350 @@
+<html>
+<head>
+<link rel=stylesheet href="/css/cteform.css" type="text/css">
+<title>View Assessment Result &copy; 2002-2005 iCarnegie, Inc. - UI Version 3.14.1</title>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache"><META HTTP-EQUIV="Expires" CONTENT="-1"><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8"><script language="JavaScript" src="/js/cteform.js"></script>
+<script language="JavaScript" src="/js/ctecoursespt.js"></script>
+<script language="JavaScript1.2">
+CTEUtils_ImgDirURL = "/img";
+CTEUtils_CssDirURL = "/css";
+CTEUtils_JsDirURL = "/js";
+</script>
+<script language="JavaScript1.2" src="/js/ctesortable.js"></script><script language="JavaScript">var filelisting_6765889_tbl_info = new Array();
+filelisting_6765889_tbl_info[1] = new Array();
+filelisting_6765889_tbl_info[1]["name"] = "Size";
+filelisting_6765889_tbl_info[1]["type"] = "number";
+filelisting_6765889_tbl_info[2] = new Array();
+filelisting_6765889_tbl_info[2]["name"] = "Status";
+filelisting_6765889_tbl_info[2]["type"] = "string";
+filelisting_6765889_tbl_info[3] = new Array();
+filelisting_6765889_tbl_info[3]["name"] = "File Type";
+filelisting_6765889_tbl_info[3]["type"] = "string";
+filelisting_6765889_tbl_info[4] = new Array();
+filelisting_6765889_tbl_info[4]["name"] = "Download";
+filelisting_6765889_tbl_info[4]["type"] = "string";
+var filelisting_6765889_tbl = new Object;
+filelisting_6765889_tbl.name = 'filelisting_6765889_tbl';
+filelisting_6765889_tbl.info = filelisting_6765889_tbl_info;
+var Assm = new Object;
+Assm.name = 'Assm';
+Assm.postRenderings = new Array();
+</script></head><body onload="">
+<span class=dialogueheader>TakeAssessment </span>Exercise 8<br>
+<br>
+<table><tr>
+  <input type=hidden name="taker_id" id="taker_id" value='-1' >  <input type=hidden name="section_id" id="section_id" value='7056422' >  <input type=hidden name="record_id" id="record_id" value='7073907' ></tr></table>
+<hr><td width=5><br></td><a name="top_of_page"></a><table><tr>
+  <input type=hidden name="object_id" id="object_id" value='7073906' ></tr></table>
+<a name="top_6765889"></a>
+<table><tr>
+<td width=5><br></td>  <td class=td0_highlight-label width=12 align=right valign=top nowrap >
+     <span class=highlight-label >1.</span></td>
+<td width=5><br></td>  <td valign=top class=td0_x align=left > <a href="#6765889">Go to bottom of question.</a> </td>
+</tr></table>
+<table><tr>
+<td width=5><br></td>  <td valign=top class=td0_x align=left > <!-- new pg 070103 ici --> 
+<h2 align="center">Implementing a GUI for the Gourmet Coffee System (Part II)</h2> 
+<h3>Prerequisites, Goals, and Outcomes</h3>
+<blockquote> <b><i>Prerequisites:</i></b> Before you begin this exercise, you 
+  need mastery of the following: 
+  <ul>
+    <li> <em>Graphical user interface</em>
+<ul>
+        <li>Knowledge of Swing components and containers</li>
+        <li>Knowledge of Swing event handling</li>
+        <li>Knowledge of <code>JFileChooser</code> dialog</li>
+      </ul>
+  </ul>
+  <p> <b><i>Goals:</i></b> Reinforce your ability to create a GUI with event handling 
+  <p> <b><i>Outcomes:</i></b> You will master the following skills: 
+  <ul>
+    <li> Produce interactive applications that use a Swing GUI</li>
+  </ul>
+</blockquote>
+<h3>Background </h3>
+
+<p>In this assignment, you will create a comprehensive GUI for the <em>Gourmet 
+  Coffee System</em>. Part of the work has been done for you and is provided in 
+  the student archive. You will implement the code that handles the button events.</p>
+<h3>Description</h3>
+<p>Class <code>GourmetCoffeeGUI</code> implements a GUI for the <em>Gourmet Coffee 
+  System</em>. This GUI lets the user display the product catalog, process orders, 
+  and track the store's sales: </p>
+<blockquote>
+<table border="0" width="75%" cellpadding="2" cellspacing="2">
+  <tr>
+            <td><img height="530" width="599" alt="Figure 1 Execution of GourmetCoffeeGUI" src="Exercise%208/gou-cof-cmpl.jpg"></td>
+  </tr>
+  <tr>
+      <td><b>Figure 1</b> <i>Execution of GourmetCoffeeGUI</i></td>
+  </tr>
+</table>
+</blockquote>
+<p>The GUI is divided into four panels: Catalog, Product Information, Order, and 
+  Status:</p>
+<ul>
+  <li>The Catalog panel contains a list of product codes.</li>
+  <li>The Product Information panel contains product details. Positioned immediately 
+    beneath this panel are a text field to specify the quantity of the selected 
+    product and a button to add the selected product to the current order.</li>
+  <li>The Order panel contains the current order, its cost, and buttons to edit 
+    the order and register its sale.</li>
+  <li> The Status panel contains a text area to display messages and sales information; 
+    command buttons to display and save sales information; and radio buttons to 
+    specify the format of the sales information when it is displayed or saved.</li>
+</ul>
+<p>When a user clicks one of the following command buttons, <code>GourmetCoffeeGUI</code> 
+  handles the associated event as described below:</p>
+<ul>
+  <li><code><em>addModifyButton</em></code>. Adds the selected product to the 
+    current order. If the selected product is already part of the order, modifies 
+    the quantity of that product in the order.</li>
+  <li><code><em>removeButton</em></code>. Removes the selected item from the current 
+    order.</li>
+  <li><code><em>registerSaleButton</em></code>. Adds the current order to the 
+    store's sales and empties the current order.</li>
+  <li><code><em>displaySalesButton</em></code>. Lists all orders that have been 
+    sold in the specified format (plain text, HTML, or XML).</li>
+  <li><code><em>saveSalesButton</em></code>. Saves all orders that have been sold 
+    in a file with the specified format (plain text, HTML, or XML).</li>
+</ul>
+<p>When a user clicks one of the following radio buttons, <code>GourmetCoffeeGUI</code> 
+  handles the associated event as described below:</p>
+<ul>
+  <li><code><em>plainRadioButton</em></code>. Changes the format of the sales 
+    information to plain text.</li>
+  <li><code><em>HTMLRadioButton</em></code>. Changes the format of the sales information 
+    to HTML.</li>
+  <li><code><em>XMLRadioButton</em></code>. Changes the format of the sales information 
+    to XML.</li>
+</ul>
+<p>When a user selects an element in the following list, <code>GourmetCoffeeGUI</code> 
+  handles the associated event as described below:</p>
+<ul>
+  <li><code><em>catalogList</em></code>. Displays the details of the selected 
+    product in the &quot;Product Information&quot; panel. </li>
+</ul>
+<p><code>GourmetCoffeeGUI</code> defines the following Swing components:</p>
+<ul>
+  <li> <code><em>catalogList</em></code>. Displays the product code of every product 
+    in the product catalog.</li>
+  <li><code><em>orderList</em></code>. Displays the items in the current order.</li>
+  <li><code><em>quantityTextField</em></code>. Allows user to specify the quantity 
+    of the selected product.</li>
+  <li><code><em>totalTextField</em></code>. Displays the total cost of the current 
+    order.</li>
+  <li><code><em>statusTextArea</em></code>. Displays status messages and sales 
+    information.</li>
+  <li><code><em>fileChooser</em></code>. A <a href="http://java.sun.com/j2se/1.4/docs/api/javax/swing/JFileChooser.html" target="externalWindow"><code>JFileChooser</code></a> 
+    object. Allows user to specify the name and location of the file in which 
+    the sales information will be saved. This dialog box appears when the &#8220;Save 
+    Sales&#8221; button is clicked.</li>
+</ul>
+<p><code>GourmetCoffeeGUI</code> defines the following instance variables:</p>
+<ul>
+  <li><code><em>catalog</em></code>. Contains the product catalog, a <code>Catalog</code> 
+    object.</li>
+  <li><code><em>currentOrder</em></code>. An <code>Order</code> object that contains 
+    the items to be purchased.</li>
+  <li><code><em>sales</em></code>. A <code>Sales</code> object that contains the 
+    orders that have been sold.</li>
+  <li><code><em>salesFormatter</em></code>. A <code>SalesFormatter</code> object 
+    that specifies the format to be used when the sales information is displayed 
+    or saved.</li>
+  <li><code><em>dollarFormatter</em></code>. A <code> <a href="http://java.sun.com/j2se/1.4/docs/api/java/text/NumberFormat.html#getCurrencyInstance()" target="externalWindow"> 
+    NumberFormat</a></code> object used to find the dollar representation of a 
+    number. (The dollar representation of 1.0 is &quot;$1.00&quot;.) </li>
+</ul>
+<p>New methods have been added to classes <code>Catalog</code> and <code>Order</code>: 
+</p>
+<ul>
+  <li>The method <code>getCodes</code> has been added to the class <code>Catalog</code>. 
+    It returns an array of product codes (all the product codes in the product 
+    catalog) which is used by <code>GourmetCoffeeGUI</code> to populate the catalog 
+    <code>JList</code>. </li>
+  <li>The method <code>getItems</code> has been added to the class <code>Order</code>. 
+    It returns an array of the <code>OrderItem</code> objects (all the items in 
+    the current order) which is used by <code>GourmetCoffeeGUI</code> to populate 
+    the order <code>JList</code>.</li>
+</ul>
+<p>The button events are handled using named inner classes in class <code>GourmetCoffeeGUI</code>. 
+  The following inner classes are complete and should not be modified:</p>
+<ul>
+  <li><code><em>DisplayProductListener</em></code>. Listener for the catalog list</li>
+  <li><code><em>RegisterSaleListener</em></code>. Listener for the button &quot;Register 
+    Sale of Current Order&quot;</li>
+  <li><code><em>PlainListener</em></code>. Listener for the radio button &quot;Plain&quot;</li>
+  <li><code><em>HTMLListener</em></code>. Listener for the radio button &quot;HTML&quot;</li>
+  <li><code><em>XMLListener</em></code>. Listener for the radio button &quot;XML&quot;</li>
+  <li><code><em>DisplaySalesListener</em></code>. Listener for button &quot;Display 
+    Sales&quot;</li>
+</ul>
+<p>In this assignment, you should complete the implementation of the following 
+  inner classes:</p>
+<ul>
+  <li><code><em>AddModifyListener</em></code>. Listener for button &quot;Add|Modify 
+    Order Item&quot;</li>
+  <li><code><em>RemoveListener</em></code>. Listener for button &quot;Remove Order 
+    Item&quot;</li>
+  <li><code><em>SaveSalesListener</em></code>. Listener for button &quot;Save 
+    Sales&quot;</li>
+</ul>
+<h3>Files</h3>
+The following files are needed to complete this assignment: 
+<ul>
+  <li><cite><a href="Exercise%208/exe-gourmet-coffee-gui.jar"><code>exe-gourmet-coffee-gui.jar</code></a></cite>. 
+    Download this file. It is the sample executable. </li>
+  <li><cite><a href="Exercise%208/student-files.zip"><code>student-files.zip</code></a></cite>. 
+    Download this file. This archive contains the following: 
+    <ul>
+      <li>Class files 
+        <ul>
+          <li><cite><code>Coffee.class</code></cite></li>
+          <li><cite><code>CoffeeBrewer.class</code></cite></li>
+          <li><cite><code>Product.class</code></cite> </li>
+          <li><cite><code>Catalog.class</code></cite>. A modified version of class 
+            <code>Catalog</code></li>
+          <li><cite><code>OrderItem.class</code></cite></li>
+          <li><cite><code>Order.class</code></cite>. A modified version of class 
+            <code>Order</code></li>
+          <li><cite><code>Sales.class</code></cite></li>
+          <li><cite><code>CatalogLoader.html</code></cite></li>
+          <li><code><cite>File</cite></code><cite><code>CatalogLoader.html</code></cite></li>
+          <li><cite><code>DataFormatException.html</code></cite></li>
+          <li><cite><code>SalesFormatter.class</code></cite></li>
+          <li><cite><code>PlainTextSalesFormatter.class</code></cite></li>
+          <li><cite><code>HTMLSalesFormatter.class</code></cite></li>
+          <li><cite><code>XMLSalesFormatter.class</code></cite></li>
+        </ul>
+      </li>
+      <li>Documentation 
+        <ul>
+          <li><cite><code>Coffee.html</code></cite></li>
+          <li><cite><code>CoffeeBrewer.html</code></cite></li>
+          <li><cite><code>Product.html</code></cite> </li>
+          <li><cite><code>Catalog.html</code></cite>. A modified version of class 
+            <code>Catalog</code></li>
+          <li><cite><code>OrderItem.html</code></cite></li>
+          <li><cite><code>Order.html</code></cite>. A modified version of class 
+            <code>Order</code></li>
+          <li><cite><code>Sales.html</code></cite> </li>
+          <li><cite><code>CatalogLoader.html</code></cite></li>
+          <li><code><cite>File</cite></code><cite><code>CatalogLoader.html</code></cite></li>
+          <li><cite><code>DataFormatException.html</code></cite></li>
+          <li><cite><code>SalesFormatter.html</code></cite></li>
+          <li><cite><code>PlainTextSalesFormatter.html</code></cite></li>
+          <li><cite><code>HTMLSalesFormatter.html</code></cite></li>
+          <li><cite><code>XMLSalesFormatter.html</code></cite></li>
+        </ul>
+      </li>
+      <li>Java files 
+        <ul>
+          <li><cite><code>GourmetCoffeeGUI.java</code></cite>. Use this template 
+            to complete your implementation.</li>
+        </ul>
+      </li>
+      <li>Data files for the test driver 
+        <ul>
+          <li><cite><code>catalog.dat</code></cite>. A file with product information 
+            for every product in the product catalog</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<h3>Tasks </h3>
+<p>Complete the implementation of <code>AddModifyListener</code>, <code>RemoveListener</code>, 
+  and <code>SaveSalesListener</code>. The messages displayed in the status area 
+  by these inner classes should match the messages displayed by the sample executable. 
+</p>
+<p>Follow Sun's code conventions. The following steps will guide you through this 
+  assignment. Work incrementally and test each increment. Save often.</p>
+<ol start="1">
+  <li><strong>Extract </strong> the files by issuing the following command at 
+    the command prompt: 
+    <p><tt>C:\&gt;</tt><kbd>unzip student-files.zip</kbd> </p>
+  </li>
+  <li><strong>Run</strong> the sample executable by issuing the following command 
+    at the command prompt: </li>
+</ol>
+<ul>
+  <blockquote><tt>C:\&gt;</tt><kbd>java -jar exe-gourmet-coffee-gui.jar</kbd> 
+  </blockquote>
+</ul>
+<ol start="3">
+  <li><strong>Then</strong>, implement method <code>actionPerformed</code> in 
+    the inner class <code>AddModifyListener</code>: If the current order does 
+    not contain an item with the selected product, then create a new order item 
+    and add it to the current order. Otherwise, locate the item in the order with 
+    the selected product and changes its quantity to the value specified by the 
+    user. Finally, update the current order list (use method <code>Order.getItems</code> 
+    to obtain an array containing all the items in this order), display a status 
+    message in the status area, and update the display of the order's total cost. 
+    Use the following code to display the order's total cost in dollars:</li>
+  <pre>totalTextField.setText(dollarFormatter.format(currentOrder.getTotalCost()));</pre>
+</ol>
+<blockquote> 
+  <p> This method should display an error message in the status area when it detects 
+    one of the following errors:</p>
+</blockquote>
+<ul>
+  <ul>
+    <li>The quantity text field does not contain an integer</li>
+    <li>The quantity text field contains a negative integer or zero.</li>
+    <li>The user has not selected a product.</li>
+  </ul>
+</ul>
+<ol start="4">
+  <li><strong>Next</strong>, implement method <code>actionPerformed</code> in 
+    the inner class <code>RemoveListener</code>: Remove the selected item from 
+    the current order, display a status message in the status area, update the 
+    current order list (use method <code>Order.getItems</code> to obtain an array 
+    containing all the items in this order), and update the display of the order's 
+    total cost. Use the following code to display the order's total cost in dollars:</li>
+  <pre>totalTextField.setText(dollarFormatter.format(currentOrder.getTotalCost()));</pre>
+</ol>
+<blockquote> 
+  <p> This method should display an error message in the status area when it detects 
+    one of the following errors:</p>
+</blockquote>
+<ul>
+  <ul>
+    <li>The current order is empty. </li>
+    <li>The user has not selected an item in the order. </li>
+  </ul>
+</ul>
+<ol start="5">
+  <li><strong>Then</strong>, implement method <code>actionPerformed</code> in 
+    the inner class <code>SaveSalesListener</code>: Save the sales information 
+    in a file. Begin by opening a file chooser so the user can specify the name 
+    and location of the file in which the sales information will be saved. Next, 
+    save the sales information in the specified file. The file should be saved 
+    in the format indicated by the radio button selection. Finally, display a 
+    status message in the status area. </li>
+</ol>
+<blockquote> 
+  <p> This method should display an error message in the status area when it detects 
+    one of the following errors:</p>
+</blockquote>
+<ul>
+  <ul>
+    <li>No orders have been sold.</li>
+    <li>The user closes the file chooser without selecting a file.</li>
+    <li>The file specified by the user cannot be created or opened. </li>
+  </ul>
+</ul>
+<ol start="6">
+  <li><strong>Finally</strong>, compile and execute the class <code>GourmetCoffeeGUI</code>. 
+  </li>
+</ol>
+<h3>Submission</h3>
+<p>Upon completion, submit <strong>only</strong> the following.</p>
+<ol>
+  <li><code>GourmetCoffeeGUI.java</code></li>
+</ol>
+ </td>
+<td width=5><br></td></tr></table>
+<a name="6765889"></a><table><tr>
+<td width=5><br></td>  <td valign=top class=td0_x align=left > <a href="#top_6765889">Go to top of question.</a> </td>
+</tr></table>
+</body></html>
